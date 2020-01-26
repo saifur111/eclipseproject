@@ -20,19 +20,19 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     private int score=0;
     private int totalBricks=21;
     private Timer timer;
-    private int dealy=8;
+    private int dealy=7;
     private int playerX=310;
-    private int ballposX=120;
-    private int ballposY=350;
+    private int ballposX=350;
+    private int ballposY=500;
     private int ballXdir=-1;
     private int ballYdir=-2;
     private AreaGenerator map_obj;
 	private int brickWideth;
     
-    ///constructor
+    ////////constructor
     
     public GameRun() {
-    	///Send the parametar values map method
+    	///////Send the parametar values map method
     	map_obj = new AreaGenerator(3,7);
     	addKeyListener(this);
     	setFocusable(true);
@@ -45,34 +45,34 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     
     
     public void paint(Graphics g) {
-    ///BackGround 
+    ///////BackGround 
     	g.setColor(Color.black);
     	g.fillRect(1, 1, 692, 592);
     	
     	
-    /// Calling the draw Function 
+    //////// Calling the draw Function 
 		map_obj.draw((Graphics2D)g); //converting 2D graphics....
 		
     	
-    ///Borders
+    //////////Borders
     	g.setColor(Color.yellow);
     	g.fillRect(0, 0, 3, 592);
     	g.fillRect(0, 0, 692,3);
     	g.fillRect(691, 0, 3,592);
     	
-    ////Add the Score...
+    //////////Add the Score...
     	g.setColor(Color.white);
     	g.setFont(new Font("serif",Font.BOLD,24));
     	g.drawString(""+score, 590, 30);
     	
-    ///Paddle
+    //////////Paddle
     	g.setColor(Color.green);
     	g.fillRect(playerX, 550, 100, 8);
-    ///The Ball
+    //////////The Ball
     	g.setColor(Color.yellow);
     	g.fillOval(ballposX, ballposY, 20, 20);
     	
-    ////Finished the total bricks.....
+    //////////Finished the total bricks.....
     	
     	if(totalBricks<=0) {
     		play=false;
@@ -80,14 +80,106 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     		ballYdir=0;
     		g.setColor(Color.GREEN);
     		g.setFont(new Font("serif",Font.BOLD,30));
-    		g.drawString("Game Over ", 270, 300);
+    		g.drawString("Level 2 ", 270, 300);
     		g.drawString("Your Scores: "+score, 235, 340);
     		
-    		g.setFont(new Font("serif",Font.BOLD,20));
-    		g.drawString("Press Enter To Restarting Game.", 200, 370);
-    	}
+    		//Level 2;
+    		play=true;
+			playerX=310;
+		    ballposX=350;
+			ballposY=500;
+		    ballXdir=-1;
+			ballYdir=-2;
+			playerX=310;
+			//score=0;
+			totalBricks=32;
+			map_obj=new AreaGenerator(3,8);
+			repaint();
+			    if(totalBricks<=0) {
+					///Level 3;
+					play=false;
+					ballYdir=0;
+					ballYdir=0;
+					g.setColor(Color.GREEN);
+					g.setFont(new Font("serif",Font.BOLD,30));
+					g.drawString("Level 3 ", 270, 300);
+					g.drawString("Your Scores: "+score, 235, 340);
+					
+					play=true;
+					playerX=310;
+				    ballposX=350;
+					ballposY=500;
+				    ballXdir=-1;
+					ballYdir=-2;
+					playerX=310;
+					//score=0;
+					totalBricks=45;
+					map_obj=new AreaGenerator(4,8);
+					repaint();
+			
+						if(totalBricks<=0){
+								   
+								///Level 4;
+								
+								
+								play=false;
+					    		ballYdir=0;
+					    		ballYdir=0;
+					    		g.setColor(Color.GREEN);
+					    		g.setFont(new Font("serif",Font.BOLD,30));
+					    		g.drawString("Level 4 ", 270, 300);
+					    		g.drawString("Your Scores: "+score, 235, 340);
+								
+								play=true;
+								playerX=310;
+							    ballposX=350;
+								ballposY=500;
+							    ballXdir=-1;
+								ballYdir=-2;
+								playerX=310;
+								//score=0;
+								totalBricks=45;
+								map_obj=new AreaGenerator(5,8);
+								repaint();
+										if(totalBricks<=0){
+												   
+												///Level 4;
+												
+												
+												play=false;
+									    		ballYdir=0;
+									    		ballYdir=0;
+									    		g.setColor(Color.GREEN);
+									    		g.setFont(new Font("serif",Font.BOLD,30));
+									    		g.drawString("Level 5 ", 270, 300);
+									    		g.drawString("Your Scores: "+score, 235, 340);
+												
+												play=true;
+												playerX=310;
+											    ballposX=350;
+												ballposY=500;
+											    ballXdir=-1;
+												ballYdir=-2;
+												playerX=310;
+												//score=0;
+												totalBricks=45;
+												map_obj=new AreaGenerator(5,9);
+												repaint();
+									}
+			
+			                  }
+						
+			            }
+			
+			     }
+			
+			
+    		/*g.setFont(new Font("serif",Font.BOLD,20));
+    		g.drawString("Press Enter To Restarting Game.", 200, 370);*/
     	
-    /////	Scoreing and Game over Function..........
+
+    	
+    ///////////Scoreing and Game over Function..........
     	if(ballposY>570) {
     		play=false;
     		ballYdir=0;
@@ -110,63 +202,63 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 	
 	@Override
 	public void keyReleased(KeyEvent e) {}
-	///press Action here
+	////////////press Action here
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		timer.start();
 		
 		if(play) {
-		////	Detecting the Paddle
+		//////////////Detecting the Paddle
 			if(new Rectangle(ballposX,ballposY,20,20).intersects(new Rectangle(playerX,550,100,8))){
 				ballYdir=-ballYdir;
 			}
 			
 			
-	   ///// inter section the position of ball and bricks.......
+	   //////////////inter section the position of ball and bricks.......
 			
 			A: for(int i=0;i<map_obj.map.length;i++) {
 				for(int j=0;j<map_obj.map[0].length;j++) {
 					if(map_obj.map[i][j]>0) { 
-						////Createing  variable .....
+						//////////Createing  variable .....
 						
 						int brickX=j*map_obj.brickWidth+80;
 						int brickY=i*map_obj.brickHeight+50;
 						int brickwidth=map_obj.brickWidth;
 						int brickHeight=map_obj.brickHeight;
 						
-						////Createing ractangle function......
+						//////////Createing ractangle function......
 						Rectangle rect=new Rectangle(brickX,brickY,brickwidth,brickHeight);
 						Rectangle ballRect=new Rectangle(ballposX,ballposY,20,20);
 						Rectangle brickRect=rect;
 						 
 						if(ballRect.intersects(brickRect)) {
-							////call the setBricks funcion (in areagame class)  and change the value to zero......
+						/////////call the setBricks funcion (in areagame class)  and change the value to zero......
 							map_obj.setBrickValue(0,i,j);
 							
 							
-							totalBricks--;//////Bricks Decrising......
+							totalBricks--;//////////Bricks Decrising......
 							score+=5;///Bricks point (5)......
 							
 							if(ballposX+19<=brickRect.x || ballposX+1>=brickRect.x+brickRect.width) {
-								ballXdir=-ballXdir;////move ball Opposite direction For x Axis........
+								ballXdir=-ballXdir;/////////move ball Opposite direction For x Axis........
 							}
 							else
 							{
-								ballYdir=-ballYdir;////move ball Opposite direction For y Axis........
+								ballYdir=-ballYdir;/////////move ball Opposite direction For y Axis........
 							}
-							break A;///Break the outer loop.....
+							break A;               /////////Break the outer loop.....
 						}
 					}
 				}
 			}
 				
-		///ball Movement 		
+		    //////////ball Movement 		
 			ballposX+=ballXdir;
 			ballposY+=ballYdir;
-			if(ballposX<0) {///// Less then Zero move opposite dir of x axis....
+			if(ballposX<0) {////////// Less then Zero move opposite dir of x axis....
 				ballXdir=-ballXdir;
 			}
-			if(ballposY<0) {///////Less then Zero move opposite dir of y axis....
+			if(ballposY<0) {////////// Less then Zero move opposite dir of y axis....
 				ballYdir=-ballYdir;
 		    }
 			if(ballposX>670) {
@@ -174,10 +266,10 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 		    }
 	    }
 		
-		repaint();///// Here  Again Call the paint method........
+		repaint();///////////Here  Again Call the paint method........
 	}
 
-   ////Key Pressed Event.....
+    /////////////Key Pressed Event.....
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
@@ -207,8 +299,8 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 		   if(!play) {
 				play=true;
 				playerX=310;
-			    ballposX=120;
-				ballposY=350;
+			    ballposX=350;
+				ballposY=500;
 			    ballXdir=-1;
 				ballYdir=-2;
 				playerX=310;

@@ -16,7 +16,7 @@ public class main {
         ob.setTitle("Brick Breaker");
         ob.setResizable(true);
         ob.setVisible(true);
-        ///// This Code For Windows Center........
+        /////////This Code For Windows Center........
         int scrWidth=(int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
         int scrHeight=(int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
         ob.setSize(width, height);
@@ -24,7 +24,7 @@ public class main {
         
         
         ob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      ///Adding Game Run Class here..........
+        ////////Adding Game Run Class here..........
         ob.add(obj);
 	}
 
