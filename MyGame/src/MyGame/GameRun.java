@@ -87,12 +87,13 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     		//Level 2;
     		play=true;
     		dealy=7;
-			playerX=310;
-		    ballposX=350;
-			ballposY=500;
-		    ballXdir=-1;
-			ballYdir=-2;
-			playerX=310;
+    		//setValue();
+    		 playerX=310;
+     	    ballposX=350;
+     	    ballposY=500;
+     	    ballXdir=-1;
+     	    ballYdir=-2;
+     	    playerX=310;///////This is set the possition of ball and paddle....in x,y axis....
 			//score=0;
 			totalBricks=32;
 			map_obj=new AreaGenerator(4,8);
@@ -110,12 +111,13 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 						
 						play=true;
 						dealy=6;
-						playerX=310;
-					    ballposX=350;
-						ballposY=500;
-					    ballXdir=-1;
-						ballYdir=-2;
-						playerX=310;
+						//setValue();
+						 playerX=310;
+				    	    ballposX=350;
+				    	    ballposY=500;
+				    	    ballXdir=-1;
+				    	    ballYdir=-2;
+				    	    playerX=310;
 						//score=0;
 						totalBricks=40;
 						map_obj=new AreaGenerator(5,8);
@@ -124,9 +126,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 			
 						if(totalBricks<=0){
 								   
-								///Level 4;
-								
-								
+								///Level 4;								
 								play=false;
 					    		ballYdir=0;
 					    		ballYdir=0;
@@ -137,22 +137,20 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 								
 								play=true;
 								dealy=5;
-								playerX=310;
-							    ballposX=350;
-								ballposY=500;
-							    ballXdir=-1;
-								ballYdir=-2;
-								playerX=310;
+								//setValue();
+								 playerX=310;
+						    	    ballposX=350;
+						    	    ballposY=500;
+						    	    ballXdir=-1;
+						    	    ballYdir=-2;
+						    	    playerX=310;
 								//score=0;
 								totalBricks=45;
 								map_obj=new AreaGenerator(5,9);
 								repaint();
 								count=4;
-										if(totalBricks<=0){
-												   
-												///Level 4;
-												
-												
+										if(totalBricks<=0){												   
+												///Level 4;												
 												play=false;
 									    		ballYdir=0;
 									    		ballYdir=0;
@@ -163,12 +161,13 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 												
 												play=true;
 												dealy=4;
-												playerX=310;
-											    ballposX=350;
-												ballposY=500;
-											    ballXdir=-1;
-												ballYdir=-2;
-												playerX=310;
+												//setValue();
+												 playerX=310;
+										    	    ballposX=350;
+										    	    ballposY=500;
+										    	    ballXdir=-1;
+										    	    ballYdir=-2;
+										    	    playerX=310;
 												//score=0;
 												totalBricks=50;
 												map_obj=new AreaGenerator(5,10);
@@ -256,7 +255,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 							{
 								ballYdir=-ballYdir;/////////move ball Opposite direction For y Axis........
 							}
-							break A;               /////////Break the outer loop.....
+							break A;     /////////Break the outer loop.....
 						}
 					}
 				}
@@ -264,7 +263,9 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 				
 		    //////////ball Movement 		
 			ballposX+=ballXdir;
+			 
 			ballposY+=ballYdir;
+			
 			if(ballposX<0) {////////// Less then Zero move opposite dir of x axis....
 				ballXdir=-ballXdir;
 			}
@@ -308,12 +309,13 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 		if(e.getKeyChar()==KeyEvent.VK_ENTER) {
 		   if(!play) {
 				play=true;
-				playerX=310;
-			    ballposX=350;
-				ballposY=500;
-			    ballXdir=-1;
-				ballYdir=-2;
-				playerX=310;
+				//setValue();
+				 playerX=310;
+		    	    ballposX=350;
+		    	    ballposY=500;
+		    	    ballXdir=-1;
+		    	    ballYdir=-2;
+		    	    playerX=310;
 				score=0;
 				if(count==1) {
 				totalBricks=21;
@@ -321,19 +323,19 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 				}
 				
 				if(count==2) {
-					totalBricks=21;
+					totalBricks=32;
 					map_obj=new AreaGenerator(4,8);//// Passing arguments AreaGenerator Constructor.......
 					}
 				if(count==3) {
-					totalBricks=21;
+					totalBricks=40;
 					map_obj=new AreaGenerator(5,8);//// Passing arguments AreaGenerator Constructor.......
 					}
 				if(count==4) {
-					totalBricks=21;
+					totalBricks=45;
 					map_obj=new AreaGenerator(5,9);//// Passing arguments AreaGenerator Constructor.......
 					}
 				if(count==5) {
-					totalBricks=21;
+					totalBricks=50;
 					map_obj=new AreaGenerator(5,10);//// Passing arguments AreaGenerator Constructor.......
 					}
 				repaint();///// Here  Again Call the paint method........
@@ -343,20 +345,53 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 	
 	////move Right
 	public void moveRight() {
+		
+		if(count==1) {
 		play=true;
-		playerX+=30;
+		playerX+=25;
+		}
+		
+		if(count==2) {
+			play=true;
+			playerX+=30;
+			}
+		if(count==3) {
+			play=true;
+			playerX+=35;
+			}
+		if(count==4) {
+			play=true;
+			playerX+=40;
+			}
+		if(count==5) {
+			play=true;
+			playerX+=45;
+			}
 	}
 	
    ////move Left
 	public void moveLeft() {
+		if(count==1) {
 		play=true;
-		playerX-=30;
+		playerX-=25;
+		}
+		
+		if(count==2) {
+			play=true;
+			playerX-=30;
+			}
+		if(count==3) {
+			play=true;
+			playerX-=35;
+			}
+		if(count==4) {
+			play=true;
+			playerX-=40;
+			}
+		if(count==5) {
+			play=true;
+			playerX-=45;
+			}
 	}
-
-	
-
-
-
-
 
 }
