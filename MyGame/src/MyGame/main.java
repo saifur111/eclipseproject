@@ -22,14 +22,14 @@ public class main {
         ob.setVisible(true);
         
         /////////This Code For Windows Center........
-        int scrWidth=(int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();
-        int scrHeight=(int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+        int scrWidth=(int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getWidth();////scrWidth=1280...
+        int scrHeight=(int)java.awt.Toolkit.getDefaultToolkit().getScreenSize().getHeight();///scrHeight=768...
         
         System.out.println("After scrWidth="+scrWidth);
         System.out.println("After scrHeight="+scrHeight);
         
-        ob.setSize(width, height);
-        ob.setLocation((scrWidth/2)-(width/2), (scrHeight/2)-(height/2));
+        ob.setSize(width, height);///// width=700,height=600.....
+        ob.setLocation((scrWidth/2)-(width/2), (scrHeight/2)-(height/2));////SetLocation(290,84)..
         
         
         ob.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

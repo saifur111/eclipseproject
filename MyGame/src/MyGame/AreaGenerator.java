@@ -42,8 +42,8 @@ public class AreaGenerator {
 				   
 				   ///Fill the Area Green color we get in array...
 				   g.fillRect(j*brickWidth+80, i*brickHeight+50, brickWidth, brickHeight);
-				   g.setStroke(new BasicStroke(3));
-				 ///Full Area Devided Constructor Value.....
+				   g.setStroke(new BasicStroke(2));
+				   //Full Area Devided Constructor Value.....
 				   g.setColor(Color.black);
 				   g.drawRect(j*brickWidth+80, i*brickHeight+50, brickWidth, brickHeight);
 			   }

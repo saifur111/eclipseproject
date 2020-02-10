@@ -27,6 +27,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     private int ballXdir=-1;
     private int ballYdir=-2;
     private AreaGenerator map_obj;
+    private BarGenerator bar_obj;
 	private int brickWideth;
 	private int count=1;
     
@@ -35,11 +36,14 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     public GameRun() {
     	///////Send the parametar values map method
     	map_obj = new AreaGenerator(3,7);
+    	bar_obj=new BarGenerator(1,1);
     	addKeyListener(this);
     	setFocusable(true);
     	setFocusTraversalKeysEnabled(false);
     	timer=new Timer(dealy,this);
     	timer.start();
+    	
+    	
     }
     
     
@@ -53,7 +57,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     	
     //////// Calling the draw Function 
 		map_obj.draw((Graphics2D)g); //converting 2D graphics....
-		
+		bar_obj.draw((Graphics2D)g);
     	
     //////////Borders
     	g.setColor(Color.yellow);
@@ -64,8 +68,16 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     //////////Add the Score...
     	g.setColor(Color.white);
     	g.setFont(new Font("serif",Font.BOLD,24));
-    	g.drawString(""+score, 590, 30);
-    	
+    	if(count==1)
+    	   g.drawString("LEVEL 1 - "+score, 500, 30);
+    	if(count==2)
+     	   g.drawString("LEVEL 2 - "+score, 500, 30);
+    	if(count==3)
+           g.drawString("LEVEL 3 - "+score, 500, 30);
+    	if(count==4)
+           g.drawString("LEVEL 4 - "+score, 500, 30);
+    	if(count==5)
+           g.drawString("LEVEL 5 - "+score, 500, 30);
     //////////Paddle
     	g.setColor(Color.green);
     	g.fillRect(playerX, 550, 100, 8);
@@ -79,48 +91,37 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     		play=false;
     		ballYdir=0;
     		ballYdir=0;
-    		g.setColor(Color.GREEN);
-    		g.setFont(new Font("serif",Font.BOLD,30));
-    		g.drawString("Level 2 ", 270, 300);
-    		g.drawString("Your Scores: "+score, 235, 340);
-    		
     		//Level 2;
     		play=true;
     		dealy=7;
-    		//setValue();
-    		 playerX=310;
+    		playerX=310;
      	    ballposX=350;
      	    ballposY=500;
      	    ballXdir=-1;
      	    ballYdir=-2;
      	    playerX=310;///////This is set the possition of ball and paddle....in x,y axis....
-			//score=0;
+			
 			totalBricks=32;
 			map_obj=new AreaGenerator(4,8);
+			//bar_obj=new BarGenerator(1,5);
 			repaint();
 			count=2;
 				   if(totalBricks<=0) {
-						///Level 3;
+						    ///Level 3;
 						play=false;
 						ballYdir=0;
 						ballYdir=0;
-						g.setColor(Color.GREEN);
-						g.setFont(new Font("serif",Font.BOLD,30));
-						g.drawString("Level 3 ", 270, 300);
-						g.drawString("Your Scores: "+score, 235, 340);
-						
 						play=true;
 						dealy=6;
-						//setValue();
-						 playerX=310;
+						playerX=310;
 				    	    ballposX=350;
 				    	    ballposY=500;
 				    	    ballXdir=-1;
 				    	    ballYdir=-2;
 				    	    playerX=310;
-						//score=0;
-						totalBricks=40;
+					    totalBricks=40;
 						map_obj=new AreaGenerator(5,8);
+					   // bar_obj=new BarGenerator(1,5);
 						repaint();
 						count=3;
 			
@@ -130,11 +131,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 								play=false;
 					    		ballYdir=0;
 					    		ballYdir=0;
-					    		g.setColor(Color.GREEN);
-					    		g.setFont(new Font("serif",Font.BOLD,30));
-					    		g.drawString("Level 4 ", 270, 300);
-					    		g.drawString("Your Scores: "+score, 235, 340);
-								
+					    	
 								play=true;
 								dealy=5;
 								//setValue();
@@ -147,6 +144,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 								//score=0;
 								totalBricks=45;
 								map_obj=new AreaGenerator(5,9);
+								//bar_obj=new BarGenerator(1,5);
 								repaint();
 								count=4;
 										if(totalBricks<=0){												   
@@ -154,11 +152,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 												play=false;
 									    		ballYdir=0;
 									    		ballYdir=0;
-									    		g.setColor(Color.GREEN);
-									    		g.setFont(new Font("serif",Font.BOLD,30));
-									    		g.drawString("Level 5 ", 270, 300);
-									    		g.drawString("Your Scores: "+score, 235, 340);
-												
+									    	
 												play=true;
 												dealy=4;
 												//setValue();
@@ -171,6 +165,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 												//score=0;
 												totalBricks=50;
 												map_obj=new AreaGenerator(5,10);
+												//bar_obj=new BarGenerator(1,5);
 												repaint();
 												count=5;
 									}
@@ -191,15 +186,15 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
     ///////////Scoreing and Game over Function..........
     	if(ballposY>570) {
     		play=false;
+    		ballXdir=0;
     		ballYdir=0;
-    		ballYdir=0;
-    		g.setColor(Color.GREEN);
+    		g.setColor(Color.WHITE);
     		g.setFont(new Font("serif",Font.BOLD,30));
     		g.drawString("Game Over ", 270, 300);
     		g.drawString("Your Scores: "+score, 235, 340);
     		
     		g.setFont(new Font("serif",Font.BOLD,20));
-    		g.drawString("Press Enter To Restarting Game.", 200, 370);
+    		g.drawString("Press Enter To Restarting Game.", 200, 390);
     	}
     	
     	g.dispose();
@@ -235,6 +230,11 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 						int brickwidth=map_obj.brickWidth;
 						int brickHeight=map_obj.brickHeight;
 						
+						System.out.println("After brickX="+brickX);	
+						System.out.println("After brickY="+brickY);	
+						System.out.println("After  brickwidth="+ brickwidth);	
+						System.out.println("After brickHeight="+brickHeight);	
+						
 						//////////Createing ractangle function......
 						Rectangle rect=new Rectangle(brickX,brickY,brickwidth,brickHeight);
 						Rectangle ballRect=new Rectangle(ballposX,ballposY,20,20);
@@ -248,6 +248,43 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 							totalBricks--;//////////Bricks Decrising......
 							score+=5;///Bricks point (5)......
 							
+							if(ballposX+19<=brickRect.x || ballposX+1>=brickRect.x+brickRect.width) {
+								ballXdir=-ballXdir;/////////move ball Opposite direction For x Axis........
+							}
+							else
+							{
+								ballYdir=-ballYdir;/////////move ball Opposite direction For y Axis........
+							}
+							break A;     /////////Break the outer loop.....
+						}
+					}
+				}
+			}
+			///BarGenarotor................
+			
+			A: for(int i=0;i<bar_obj.bar.length;i++) {
+				for(int j=0;j<bar_obj.bar[0].length;j++) {
+					if(bar_obj.bar[i][j]>0) { 
+						//////////Createing  variable .....
+						
+						int brickX=j*bar_obj.barWidth+170;
+						int brickY=i*bar_obj.barHeight+350/*here bar height*/;
+						int barwidth=bar_obj.barWidth;
+						int barHeight=bar_obj.barHeight;
+						
+						/*System.out.println("After brickX="+brickX);	
+						System.out.println("After brickY="+brickY);	
+						System.out.println("After  brickwidth="+ barwidth);	
+						System.out.println("After brickHeight="+barHeight);	
+						*/
+						//////////Createing ractangle function......
+						Rectangle rect=new Rectangle(brickX,brickY,barwidth,barHeight);
+						Rectangle ballRect=new Rectangle(ballposX,ballposY,20,20);
+						Rectangle brickRect=rect;
+						 
+						if(ballRect.intersects(brickRect)) {
+						/////////call the setBricks funcion (in BarGenerator class) ......
+
 							if(ballposX+19<=brickRect.x || ballposX+1>=brickRect.x+brickRect.width) {
 								ballXdir=-ballXdir;/////////move ball Opposite direction For x Axis........
 							}
@@ -316,15 +353,17 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 		    	    ballXdir=-1;
 		    	    ballYdir=-2;
 		    	    playerX=310;
-				score=0;
+				    score=0;
 				if(count==1) {
 				totalBricks=21;
 				map_obj=new AreaGenerator(3,7);//// Passing arguments AreaGenerator Constructor.......
+				bar_obj=new BarGenerator(1,1);//// Passing arguments BarGenerator Constructor.......
 				}
 				
 				if(count==2) {
 					totalBricks=32;
 					map_obj=new AreaGenerator(4,8);//// Passing arguments AreaGenerator Constructor.......
+					bar_obj=new BarGenerator(1,5);//For new passing argument BarGenerator class... 
 					}
 				if(count==3) {
 					totalBricks=40;
