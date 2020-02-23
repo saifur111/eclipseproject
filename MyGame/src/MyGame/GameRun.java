@@ -103,7 +103,7 @@ public class GameRun extends JPanel implements KeyListener,ActionListener {
 			
 			totalBricks=32;
 			map_obj=new AreaGenerator(4,8);
-			//bar_obj=new BarGenerator(1,5);
+			bar_obj=new BarGenerator(1,5);
 			repaint();
 			count=2;
 				   if(totalBricks<=0) {
